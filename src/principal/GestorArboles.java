@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import java.sql.Statement;
 
-public class Main {
+public class GestorArboles {
 
 	
 	private static final String HOST = "localhost";
