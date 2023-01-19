@@ -82,9 +82,25 @@ public class GestorArboles {
 				System.out.println("Escribe la id del arbol a modificar");
 				idModificar = Integer.parseInt(scan.nextLine());
 				
-				System.out.println("¿Cual es su nombre comun?");
-				st.executeUpdate("UPDATE arboles SET nombreComun= "+nombreComun+ "WHERE id = " +idModificar);
+				System.out.println("nombre comun");
+				nombreComun = scan.nextLine();
+				st.executeUpdate("UPDATE arboles SET nombre_comun= '"+nombreComun+ "' WHERE id = '" +idModificar+"'");
 				
+				System.out.println("Nombre cientifico");
+				nombreCientifico = scan.nextLine();
+				st.executeUpdate("UPDATE arboles SET nombre_cientifico= '"+nombreCientifico+ "' WHERE id = '" +idModificar+"'");
+				
+				System.out.println("Habitat");
+				habitat = scan.nextLine();
+				st.executeUpdate("UPDATE arboles SET habitat= '"+habitat+ "' WHERE id = '" +idModificar+"'");
+				
+				System.out.println("Altura");
+				altura = Integer.parseInt(scan.nextLine());
+				st.executeUpdate("UPDATE arboles SET altura= '"+altura+ "' WHERE id = '" +idModificar+"'");
+
+				System.out.println("Origen");
+				origen = scan.nextLine();
+				st.executeUpdate("UPDATE arboles SET origen= '"+origen+ "' WHERE id = '" +idModificar+"'");
 				break;
 			case VisualizarArboles:
 				System.out.println("Arboles: \n");
