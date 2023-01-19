@@ -46,6 +46,7 @@ public class GestorArboles {
 			System.out.println(SALIR + ". Salir");
 			System.out.println("Elije una de las opciones");
 			opcion_menu = Integer.parseInt(scan.nextLine());
+			int idModificar=0;
 
 			switch (opcion_menu) {
 			case InsertarArbol:
@@ -73,9 +74,17 @@ public class GestorArboles {
 				System.out.println("Cual es su nombre comun");
 				nombreBorrar = scan.nextLine();
 				st.execute("DELETE FROM arboles WHERE nombre_comun = "+nombreBorrar);
+				System.out.println("Arbol borrado");
 				break;
 			case ModificarArbol:
-				System.out.println("Selecciona un arbol para modificar\n");
+				
+				System.out.println("Selecciona un arbol para modificar");
+				System.out.println("Escribe la id del arbol a modificar");
+				idModificar = Integer.parseInt(scan.nextLine());
+				
+				System.out.println("¿Cual es su nombre comun?");
+				st.executeUpdate("UPDATE arboles SET nombreComun= "+nombreComun+ "WHERE id = " +idModificar);
+				
 				break;
 			case VisualizarArboles:
 				System.out.println("Arboles: \n");
