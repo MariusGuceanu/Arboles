@@ -115,7 +115,6 @@ public class GestorArboles {
 		} while (opcion_menu != SALIR);
 		scan.close();
 
-		System.out.println("Introduce un nombre de un animal");
 
 		con.close();
 	}
