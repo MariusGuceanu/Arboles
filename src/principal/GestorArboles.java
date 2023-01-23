@@ -2,6 +2,7 @@ package principal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Scanner;
@@ -65,16 +66,22 @@ public class GestorArboles {
 				origen = scan.nextLine();
 
 				// insertar todos los valores
-				st.execute("INSERT INTO arboles (nombre_comun, nombre_cientifico, habitat, altura, origen ) Values "
-						+ "('" + nombreComun + "','" + nombreCientifico + "','" + habitat + "','" + altura + "','"
-						+ origen + "')");
+				PreparedStatement preparedSt = con.prepareStatement("INSERT INTO arboles (nombre_Comun, nombre_Cientifico, habitat, altura, origen ) VALUES (?,?,?,?,?)");
+				preparedSt.setString(1 , nombreComun);
+				preparedSt.setString(2 , nombreCientifico);
+				preparedSt.setString(3 , habitat);
+				preparedSt.setInt(4 , altura);
+				preparedSt.setString(5 , origen);
+				preparedSt.execute();
 				break;
+				
 			case EliminarArbol:
 				System.out.println("Eliminar Arbol");
 				System.out.println("Cual es su nombre comun");
 				nombreBorrar = scan.nextLine();
-				st.execute("DELETE FROM arboles WHERE nombre_comun = "+nombreBorrar);
-				System.out.println("Arbol borrado");
+				preparedSt = con.prepareStatement("DELETE FROM arboles WHERE Nombre_Comun = ?");
+				preparedSt.setString(1, nombreBorrar);
+				preparedSt.execute();
 				break;
 			case ModificarArbol:
 				
