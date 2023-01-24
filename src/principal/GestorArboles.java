@@ -3,6 +3,7 @@ package principal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.Scanner;
@@ -91,26 +92,50 @@ public class GestorArboles {
 				
 				System.out.println("nombre comun");
 				nombreComun = scan.nextLine();
-				st.executeUpdate("UPDATE arboles SET nombre_comun= '"+nombreComun+ "' WHERE id = '" +idModificar+"'");
+				preparedSt = con.prepareStatement("UPDATE arboles SET nombre_Comun=? WHERE id = ?");
+				preparedSt.setString(1, nombreComun);
+				preparedSt.setInt(2, idModificar);
+				preparedSt.executeUpdate();				
 				
 				System.out.println("Nombre cientifico");
 				nombreCientifico = scan.nextLine();
-				st.executeUpdate("UPDATE arboles SET nombre_cientifico= '"+nombreCientifico+ "' WHERE id = '" +idModificar+"'");
+				preparedSt = con.prepareStatement("UPDATE arboles SET nombre_Cientifico=? WHERE id = ?");
+				preparedSt.setString(1, nombreCientifico);
+				preparedSt.setInt(2, idModificar);
+				preparedSt.executeUpdate();								
 				
 				System.out.println("Habitat");
 				habitat = scan.nextLine();
-				st.executeUpdate("UPDATE arboles SET habitat= '"+habitat+ "' WHERE id = '" +idModificar+"'");
+				preparedSt = con.prepareStatement("UPDATE arboles SET Habitat=? WHERE id = ?");
+				preparedSt.setString(1, habitat);
+				preparedSt.setInt(2, idModificar);
+				preparedSt.executeUpdate();								
 				
 				System.out.println("Altura");
 				altura = Integer.parseInt(scan.nextLine());
-				st.executeUpdate("UPDATE arboles SET altura= '"+altura+ "' WHERE id = '" +idModificar+"'");
-
+				preparedSt = con.prepareStatement("UPDATE arboles SET Altura=? WHERE id = ?");
+				preparedSt.setInt(1, altura);
+				preparedSt.setInt(2, idModificar);
+				preparedSt.executeUpdate();				
+				
 				System.out.println("Origen");
 				origen = scan.nextLine();
-				st.executeUpdate("UPDATE arboles SET origen= '"+origen+ "' WHERE id = '" +idModificar+"'");
+				preparedSt = con.prepareStatement("UPDATE arboles SET Origen=? WHERE id = ?");
+				preparedSt.setString(1, origen);
+				preparedSt.setInt(2, idModificar);
+				preparedSt.executeUpdate();				
+				
 				break;
 			case VisualizarArboles:
-				System.out.println("Arboles: \n");
+
+				String sentenciaSelect = "SELECT * FROM arboles";
+				Statement statement = con.createStatement();
+				ResultSet resultado = statement.executeQuery(sentenciaSelect);	
+				
+				while(resultado.next()) {
+					System.out.println(resultado.getInt(1) + " - " + resultado.getString(2) + " - " + resultado.getString(3) + " - " +  resultado.getString(4) + " - " +  resultado.getString(5));
+				}
+				
 				break;
 			case SALIR:
 				System.out.println("ADIOS");
