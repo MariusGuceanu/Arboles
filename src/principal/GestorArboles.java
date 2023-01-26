@@ -84,6 +84,7 @@ public class GestorArboles {
 				preparedSt.setString(1, nombreBorrar);
 				preparedSt.execute();
 				break;
+				
 			case ModificarArbol:
 				
 				System.out.println("Selecciona un arbol para modificar");

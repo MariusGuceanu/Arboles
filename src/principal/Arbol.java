@@ -9,12 +9,24 @@ public class Arbol {
 	private int altura;
 	private String Origen;
 	
-	public Arbol () {
+	@Override
+	public String toString() {
+		return "Arbol [id=" + id + ", nombreComun=" + nombreComun + ", nombreCientifico=" + nombreCientifico
+				+ ", habitat=" + habitat + ", altura=" + altura + ", Origen=" + Origen + "]";
 	}
-	
-	public Arbol (int id, String nombreComun, String nombreCientifico, String habitat, int altura, String origen) {
+	public Arbol () {
 		
 	}
+	public Arbol(int id, String nombreComun, String nombreCientifico, String habitat, int altura, String origen) {
+		super();
+		this.id = id;
+		this.nombreComun = nombreComun;
+		this.nombreCientifico = nombreCientifico;
+		this.habitat = habitat;
+		this.altura = altura;
+		Origen = origen;
+	}
+
 	public int getId() {
 		return id;
 	}
